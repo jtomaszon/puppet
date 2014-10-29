@@ -17,7 +17,7 @@ file { 'hostname':
   group   => 'root',
   mode	  => 0644,
   content => "$fqdn",
-  before  => Package['postfix'],
+  before  => Host["$fqdn"],
 } 
 
 file {'mailname': 
@@ -27,6 +27,6 @@ file {'mailname':
   group   => root,
   mode    => 0644,
   content => "$fqdn",
-  before  => Package['postfix'],
+  before  => File['hostname'],
 }
 
