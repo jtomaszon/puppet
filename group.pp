@@ -1,0 +1,3 @@
+group { 'admin':
+  ensure	=> 'present',
+}
