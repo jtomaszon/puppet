@@ -2,7 +2,7 @@ file { 'sources.list':
   alias			=> 'sources',
   path			=> '/etc/apt/sources.list',
   ensure		=> present,
-  source		=> '/root/infr-puppet/files/apt/sources.list',
+  source		=> '/root/puppet/files/apt/sources.list',
   notify		=> Exec['apt-udp']
 }
 
