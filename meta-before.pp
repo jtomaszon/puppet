@@ -20,7 +20,7 @@ file { 'hostname':
   before  => Host["$fqdn"],
 } 
 
-file {'mailname': 
+file { 'mailname': 
   path	  => '/etc/mailname',
   ensure  => present,
   owner   => root,
@@ -30,3 +30,11 @@ file {'mailname':
   before  => File['hostname'],
 }
 
+service { 'postfix':
+  ensure		=> running,
+  require		=> 
+			[ 
+				File["/etc/hostname"], 
+				File["/etc/mailname"]
+			],
+}
