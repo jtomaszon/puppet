@@ -10,9 +10,11 @@ file { 'main.cf':
   group			=> 'postfix',
   mode			=> 0644,
   source		=> '/root/puppet/files/postfix/main.cf',
+  require		=> Package['postfix'],
 }
 
 service { 'postfix':
   ensure		=> running,
   enable		=> true,
+  subscribe		=> File['main.cf'],
 }
