@@ -1,0 +1,18 @@
+NameVirtualHost www.dexter.com.br:443
+<VirtualHost www.dexter.com.br:443> 
+        DocumentRoot /srv/internet 
+        ServerName www.dexter.com.br 
+        ErrorLog /var/log/apache2/dexter-error.log 
+        CustomLog /var/log/apache2/dexter-access.log common 
+        SSLEngine on  
+        SSLCertificateFile /etc/ssl/dexter.crt 
+        SSLCertificateKeyFile /etc/ssl/dexter.key 
+</VirtualHost>
+
+NameVirtualHost www.dexter.com.br:80
+<VirtualHost www.dexter.com.br:80>
+        RewriteEngine On
+        Options +FollowSymlinks
+        rewriteCond     %{SERVER_PORT} 80
+        rewriteRule     ^(.*)$ https://www.dexter.com.br/ [R,L]
+</VirtualHost>

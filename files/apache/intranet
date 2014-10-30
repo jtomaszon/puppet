@@ -1,0 +1,12 @@
+NameVirtualHost intranet.dexter.com.br:80
+<VirtualHost intranet.dexter.com.br:80> 
+        DocumentRoot /srv/intranet
+        ServerName intranet.dexter.com.br
+        ServerAdmin root@dexter.com.br
+        ErrorLog /var/log/apache2/intranet-error.log 
+        CustomLog /var/log/apache2/intranet-access.log common 
+	BandWidthModule On
+	ForceBandWidthModule On
+	BandWidth all 10240
+	MinBandWidth all -1
+</VirtualHost> 
