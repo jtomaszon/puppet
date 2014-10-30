@@ -7,11 +7,11 @@ file { 'main.cf':
 package { 'postfix':
   ensure	=> present,
   allow_virtual => true,
-  subscribe	=> File['main.cf'],
 }
 
 service { 'postfix':
   alias		=> 'psf',
   ensure	=> running,
   enable	=> true,
+  subscribe	=> File['main.cf'],
 }
