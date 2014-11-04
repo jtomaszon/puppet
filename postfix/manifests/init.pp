@@ -17,3 +17,8 @@ define  postfix ($myorigin, $myhostname) {
   }
 
 }
+
+postfix { 'puppet.kbit.io': 
+  myorigin => 'testing-origin',
+  myhostname => 'hostname-testtest',
+}
