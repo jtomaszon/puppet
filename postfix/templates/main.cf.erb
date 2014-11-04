@@ -7,9 +7,9 @@ data_directory = /var/lib/postfix
 mail_owner = postfix
 append_dot_mydomain = yes
 
-myhostname = <%= @fqdn %>
+myhostname = <%= @myhostname %>
 
-myorigin = <%= @domain %>
+myorigin = <%= @myorigin %>
 
 relayhost = 
 mynetworks = <%= @ipaddress_lo %>/8 <%= @network_eth0 %>/<%= @netmask_eth0 %>
