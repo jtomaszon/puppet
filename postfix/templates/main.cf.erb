@@ -1,4 +1,4 @@
-smtpd_banner = MTA da Dexter - Servidor <%= @myhostname %>
+smtpd_banner = MTA da Dexter - Servidor <%= @hostname %>
 queue_directory = /var/spool/postfix
 command_directory = /usr/sbin
 daemon_directory = /usr/libexec/postfix
@@ -7,19 +7,19 @@ data_directory = /var/lib/postfix
 mail_owner = postfix
 append_dot_mydomain = yes
 
-myhostname = <%= @myorigin %>
+myhostname = <%= @fqdn %>
 
-myorigin = <%= @mydomain %>
+myorigin = <%= @domain %>
 
 relayhost = 
-mynetworks = 127.0.0.0/8 <%= @mynetworks %>
+mynetworks = <%= @ipaddress_lo %>/8 <%= @network_eth0 %>/<%= @netmask_eth0 %>
 mailbox_command = procmail -a "$EXTENSION" 
 mailbox_size_limit = 0 
 message_size_limit = 25000000
 recipient_delimiter = + 
 inet_interfaces = all
 inet_protocols = all
-mydestination = <%= @mydestination %>
+mydestination = <%= @domain %>, smtp.<%= @domain %>, localhost
 unknown_local_recipient_reject_code = 550
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
