@@ -1,4 +1,4 @@
-class postfix {
+define  postfix ($myorigin, $myhostname) {
   package {'postfix': ensure => present, allow_virtual => true }
   file { 'main.cf':
     ensure => present,
@@ -17,5 +17,3 @@ class postfix {
   }
 
 }
-
-class {'postfix': }
